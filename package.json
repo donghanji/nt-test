@@ -1,0 +1,25 @@
+{
+  "name": "nt-test",
+  "version": "1.0.0",
+  "description": "node test",
+  "main": "index.js",
+  "bin": {
+    "nt": "index.js"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "node",
+    "test"
+  ],
+  "author": "donghanji",
+  "license": "ISC",
+  "dependencies": {
+    "bignum": "^0.12.5",
+    "clustered-node": "0.0.9",
+    "commander": "^2.9.0",
+    "iconv-lite": "^0.4.13",
+    "multi-node": "^0.2.3"
+  }
+}

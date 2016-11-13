@@ -1,0 +1,54 @@
+Fri Nov 11 2016 16:59:16 GMT+0800 (CST)
+count:1
+   tt:13891068ns ; 13.89ms
+count:2
+   tt:5859265ns ; 5.86ms
+count:3
+   tt:1773033ns ; 1.77ms
+count:4
+   tt:1824316ns ; 1.82ms
+count:5
+   tt:1601328ns ; 1.60ms
+count:6
+   tt:1842398ns ; 1.84ms
+count:7
+   tt:1600512ns ; 1.60ms
+count:8
+   tt:1650992ns ; 1.65ms
+count:9
+   tt:1330516ns ; 1.33ms
+count:10
+   tt:3749076ns ; 3.75ms
+count:11
+   tt:1547448ns ; 1.55ms
+count:12
+   tt:1600930ns ; 1.60ms
+count:13
+   tt:1542755ns ; 1.54ms
+count:14
+   tt:1743349ns ; 1.74ms
+count:15
+   tt:1716253ns ; 1.72ms
+count:16
+   tt:1580089ns ; 1.58ms
+count:17
+   tt:3031385ns ; 3.03ms
+count:18
+   tt:1473318ns ; 1.47ms
+count:19
+   tt:5050854ns ; 5.05ms
+count:20
+   tt:1416500ns ; 1.42ms
+count:21
+   tt:1968838ns ; 1.97ms
+count:22
+   tt:1937903ns ; 1.94ms
+count:23tt:2684151ns ; 2.68ms
+=============================
+min:1330516ns ; 1.33ms
+max:13891068ns ; 13.89ms
+error:0
+normal:100.00%
+total: a1:2713751ns ; 2.71ms
+total: a2:2247366ns ; 2.25ms
+=============================
