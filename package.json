@@ -25,5 +25,5 @@
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:donghanji/nt-test.git"
-  },
+  }
 }
