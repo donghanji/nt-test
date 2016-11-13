@@ -27,10 +27,11 @@ program.command('init')
 	.description('nt-test init ')
 	.action(function(cmd){	
 		var cp=require('child_process');
+		var fs=require('fs');
 		var spawn=cp.spawn;
 		var cwd=process.cwd();
 		var datas=__dirname+'/data';
-		var logs=__dirname+'/log';
+		var logs=cwd+'/log';
 		cp.exec('cp -rf '+datas+' '+cwd,function(err, stdout, stderr){
 			if(err){
 				//
@@ -41,7 +42,14 @@ program.command('init')
 			}
 		});
 
-		cp.exec('cp -rf '+logs+' '+cwd,function(err, stdout, stderr){
+		if(fs.existsSync(logs)){
+			//
+			console.log('init log directory ok');
+			//
+			return console.log(logs+' is already existed');
+		}
+
+		cp.exec('mkdir log',function(err, stdout, stderr){
 			if(err){
 				//
 				console.log('init log directory error:',err);
@@ -142,7 +150,7 @@ program.command('data')
 
 		if(fs.existsSync(dataFile)){
 
-			return console.log(dataFile+'is already existed');
+			return console.log(dataFile+' is already existed');
 		}
 
 		var baseFile=cwd+'/data/1.data';
