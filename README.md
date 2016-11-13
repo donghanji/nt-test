@@ -1,7 +1,6 @@
 # nt-test
 node request/response test
 
-
 ### #First,
 `
 npm install nt-test -g
@@ -17,13 +16,21 @@ to see command help
 
 ### #Third,
 `
+nt init
+`
+<br/>
+to init,create data and log file in current directory
+
+
+### #Fourth,
+`
 nt data -s 10
 `
 <br/>
 to create response data,size * 1k,
 will create a 10.data file in ./data directory.
 
-### #Four,
+### #Fifth,
 `
 nt res -s 10
 `
@@ -48,7 +55,7 @@ more,
     10000:10000k
 </pre>
 
-### #Five,
+### #Sixth,
 `
 nt req -m 2 -s 1000
 `
@@ -70,7 +77,7 @@ nt req
   -s:space，request space time, default 100ms
 </pre>
 
-### #Six
+### #Seventh
 `
 nt clear
 `
