@@ -7,7 +7,8 @@ process.on('message',function(cmd){
 	var size=cmd.size||0;
 	var port=parseInt(cmd.port,10)||3030;
 	var multi=parseInt(cmd.multi,10)||0;
-	var dataFile='./data/'+size+'.data';
+	var cwd=process.cwd();
+	var dataFile=cwd+'/data/'+size+'.data';
 	var fs=require("fs");
 
 	if(!fs.existsSync(dataFile)){

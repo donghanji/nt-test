@@ -9,13 +9,14 @@ process.on('message',function(cmd){
 	var way=cmd.way||'http';
 	var space=parseInt(cmd.space,10)||100;
 
-	var async= require('async');
+	//var async= require('async');
 	var http = require('http');
 	var fs = require('fs');
 	var iconv = require('iconv-lite');
 	var bignum = require('bignum');
+	var cwd=process.cwd();
 
-	var filename=['./log/req','c',count,'s',space,'w',way];
+	var filename=[cwd+'/log/req','c',count,'s',space,'w',way];
 	filename=filename.join('-')+'.log';
 
 	var requestStart=[];

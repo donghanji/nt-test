@@ -10,7 +10,7 @@ function get_params(cmd){
 	for(var k in params){
 		res[k]=cmd[k];
 	}
-	console.log('get params:',res);
+	//console.log('get params:',res);
 	//
 	return res;
 }
@@ -22,6 +22,35 @@ program
 	//.option('-v, --nv <version>', 'Node-version')
 	.option('-s, --rs <size>', 'Response-size,default "helloword"')
 	.option('-w, --rw <way>', 'Request-way,default "http"');*/
+
+program.command('init')
+	.description('nt-test init ')
+	.action(function(cmd){	
+		var cp=require('child_process');
+		var spawn=cp.spawn;
+		var cwd=process.cwd();
+		var datas=__dirname+'/data';
+		var logs=__dirname+'/log';
+		cp.exec('cp -rf '+datas+' '+cwd,function(err, stdout, stderr){
+			if(err){
+				//
+				console.log('init response data files error:',err);
+			}else{
+				//
+				console.log('init reponse data files ok');
+			}
+		});
+
+		cp.exec('cp -rf '+logs+' '+cwd,function(err, stdout, stderr){
+			if(err){
+				//
+				console.log('init log directory error:',err);
+			}else{
+				//
+				console.log('init log directory ok');
+			}
+		});
+	});
 
 //request
 program.command('req')
@@ -35,9 +64,10 @@ program.command('req')
 	.action(function(cmd){	
 		var cp=require('child_process');
 		var spawn=cp.spawn;
-		var child=cp.fork('./request.js');
+		var fileName=__dirname+'/request.js';
+		var child=cp.fork(fileName);
 
-		var r=spawn('node',['request.js']);
+		var r=spawn('node',[fileName]);
 
 		child.on('message',function(m){
 			//
@@ -49,6 +79,7 @@ program.command('req')
 		child.send(cmds);
 	});
 
+//response
 program.command('res')
 	.description('response data size')
 	.option('-p, --port <port>', 'Server port,default 3030')
@@ -57,9 +88,10 @@ program.command('res')
 	.action(function(cmd){
 		var cp=require('child_process');
 		var spawn=cp.spawn;
-		var child=cp.fork('./response.js');
+		var fileName=__dirname+'/response.js';
+		var child=cp.fork(fileName);
 
-		var r=spawn('node',['response.js']);
+		var r=spawn('node',[fileName]);
 
 
 		child.on('message',function(m){
@@ -71,14 +103,15 @@ program.command('res')
 
 		child.send(cmds);
 	});
-//
+//clear
 program.command('clear')
 	.description('clear log file')
 	.action(function(){
 		var cp=require('child_process');
 		var spawn=cp.spawn;
+		var cwd=process.cwd();
 
-		var logs='./log/*';
+		var logs=cwd+'/log/*';
 		//
 		cp.exec('rm -rf '+logs,function(err, stdout, stderr){
 			if(err){
@@ -90,7 +123,7 @@ program.command('clear')
 			}
 		});
 	});
-//
+//data
 program.command('data')
 	.description('create response test data')
 	.option('-s, --size <size>', 'Create response data size,size * 1k')
@@ -103,15 +136,16 @@ program.command('data')
 		var cp=require('child_process');
 		var fs=require('fs');
 		var spawn=cp.spawn;
+		var cwd=process.cwd();
 
-		var dataFile='./data/'+size+'.data';
+		var dataFile=cwd+'/data/'+size+'.data';
 
 		if(fs.existsSync(dataFile)){
 
 			return console.log(dataFile+'is already existed');
 		}
 
-		var baseFile='./data/1.data';
+		var baseFile=cwd+'/data/1.data';
 
 		var data=fs.readFileSync(baseFile,"utf-8");
 		var str=[];
