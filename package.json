@@ -21,5 +21,9 @@
     "commander": "^2.9.0",
     "iconv-lite": "^0.4.13",
     "multi-node": "^0.2.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:donghanji/nt-test.git"
+  },
 }
