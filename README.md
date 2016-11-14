@@ -27,7 +27,8 @@ to init,create data and log file in current directory
 nt data -s 10
 `
 <br/>
-to create response data,size * 1k,
+to create response data,size * 1k,<br/>
+if < 1,like 0.2,will size * 10b,<br/>
 will create a 10.data file in ./data directory.
 
 ### #Fifth,

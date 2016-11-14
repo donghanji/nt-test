@@ -136,7 +136,7 @@ program.command('data')
 	.description('create response test data')
 	.option('-s, --size <size>', 'Create response data size,size * 1k')
 	.action(function(cmd){
-		var size=parseInt(cmd.size,10)||0;
+		var size=parseFloat(cmd.size,10)||0;
 		if(!size){
 
 			return console.log('should input a size number');
@@ -154,6 +154,10 @@ program.command('data')
 		}
 
 		var baseFile=cwd+'/data/1.data';
+		if(size < 1){
+			baseFile=cwd+'/data/0.data';
+			size=size*10;
+		}
 
 		var data=fs.readFileSync(baseFile,"utf-8");
 		var str=[];
