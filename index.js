@@ -156,7 +156,7 @@ program.command('data')
 		var baseFile=cwd+'/data/1.data';
 		if(size < 1){
 			baseFile=cwd+'/data/0.data';
-			size=size*10;
+			size=size*100;
 		}
 
 		var data=fs.readFileSync(baseFile,"utf-8");
