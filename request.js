@@ -13,8 +13,9 @@ process.on('message',function(cmd){
 	var http = require('http');
 	var fs = require('fs');
 	var iconv = require('iconv-lite');
-	var bignum = require('bignum');
 	var cwd=process.cwd();
+
+	console.log(88);
 
 	var filename=[cwd+'/log/req','c',count,'s',space,'w',way];
 	filename=filename.join('-')+'.log';
@@ -53,7 +54,7 @@ process.on('message',function(cmd){
 		var str=[Date()];
 		var results=[];
 		var totals=requestStart.length;
-		var totalsT=bignum(0);
+		var totalsT=0;
 		for(var i=0;i<totals;i++){
 			var t1=requestStart[i];
 			var t2=requestEnd[i];
@@ -67,7 +68,7 @@ process.on('message',function(cmd){
 			var t=hrtime(t2);
 			str.push('   tt:'+t+'ns ; '+getMS(t)+'ms');
 			results.push(t);
-			totalsT=totalsT.add(t);
+			totalsT+=t;
 			//str.push('');
 		}
 		str.push('');
@@ -88,12 +89,12 @@ process.on('message',function(cmd){
 		str.push('abort:'+abort);
 		str.push('count:'+count);
 		str.push('normal:'+percent);
-		var a1=totalsT.div(rtotals);
+		var a1=totalsT/rtotals;
 		var a2=a1;
 		//
 		if(rtotals > 2){
 			//
-			a2=(totalsT.sub(min).sub(max)).div(rtotals-2);
+			a2=(totalsT-min-max)/(rtotals-2);
 		}
 		//
 		str.push('total: a1:'+a1+'ns ; '+getMS(a1)+'ms');
