@@ -69,6 +69,7 @@ program.command('req')
 	.option('-c, --count <count>', 'Request-count,default "1"')
 	.option('-w, --way <way>', 'Request-way,default "http"')
 	.option('-s, --space <space>', 'Request-space,default "100ms"')
+	.option('-l, --log <log>', 'Custom log name.')
 	.action(function(cmd){	
 		var cp=require('child_process');
 		var spawn=cp.spawn;

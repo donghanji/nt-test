@@ -8,17 +8,26 @@ process.on('message',function(cmd){
 	var count=parseInt(cmd.count,10)||1;
 	var way=cmd.way||'http';
 	var space=parseInt(cmd.space,10)||100;
+	var logname=cmd.log||'';
 
 	//var async= require('async');
 	var http = require('http');
 	var fs = require('fs');
 	var iconv = require('iconv-lite');
 	var cwd=process.cwd();
-
-	console.log(88);
-
-	var filename=[cwd+'/log/req','c',count,'s',space,'w',way];
+	var lname=logname ? '-'+logname : '';
+	var filename=[cwd+'/log/req'+lname,'c',count,'s',space,'w',way];
 	filename=filename.join('-')+'.log';
+
+	if(logname && /\.log$/.test(logname)){
+		//
+		if(/^\//.test(logname)){
+			filename=logname;
+		}else{
+			filename=cwd+'/log/'+logname;
+		}
+		
+	}
 
 	var requestStart=[];
 	var requestEnd=[];
